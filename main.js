@@ -6,7 +6,7 @@ function fetchIssues() {
 
     for (var i = 0; i < issues.length; i++) {
         var id = issues[i].id;
-        var desc = issues[i].desc;
+        var desc = issues[i].description;
         var severity = issues[i].severity;
         var assignedTo = issues[i].assignedTo;
         var status = issues[i].status;
@@ -37,17 +37,14 @@ function fetchIssues() {
             "</div>";
     }
 }
-document
-    .getElementById("issuesInputForm")
-    .addEventListener("submit", saveIssue);
+document.getElementById("form-input").addEventListener("submit", saveIssue);
 
 function saveIssue(e) {
     var issueId = chance.guid();
     var issueDesc = document.getElementById("issueDescInput").value;
-    var severity = document.getElementById("issueSeverityInput").value;
-    var assignedTo = document.getElementById("issueAssignedToInput").value;
-    var issueStatus = "open";
-
+    var issueSeverity = document.getElementById("issueSeverityInput").value;
+    var issueAssignedTo = document.getElementById("issueAssignedToInput").value;
+    var issueStatus = "Open";
     var issue = {
         id: issueId,
         description: issueDesc,
@@ -62,13 +59,14 @@ function saveIssue(e) {
         localStorage.setItem("issues", JSON.stringify(issues));
     } else {
         var issues = JSON.parse(localStorage.getItem("issues"));
-        issues.push("issue");
+        issues.push(issue);
         localStorage.setItem("issues", JSON.stringify(issues));
     }
 
-    document.getElementById("form-input").reset();
+    document.getElementById("issueInputForm").reset();
 
     fetchIssues();
+
     e.preventDefault();
 }
 
