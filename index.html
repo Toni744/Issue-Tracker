@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="issueDescInput">Assigned To</label>
-                    <input type="text" class="form-control" id="issueDescInput" placeholder="Enter responsible...">
+                    <input type="text" class="form-control" id="issueAssignedToInput" placeholder="Enter responsible...">
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
@@ -45,6 +45,8 @@
             </div>
         </div>
     </div>
+    <a href="#" class="btn btn-warning" onclick="setStatusClosed(\''+id+'\')">Close</a>
+    <a href="#" class="btn btn-danger" onclick="deleteIssue(\''+id+'\')">Delete</a>
     <div class="footer">
         <p>&copy Mav-Dev</p>
     </div>
